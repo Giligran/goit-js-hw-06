@@ -15,10 +15,18 @@ const ingredients = [
 // Після чого, вставить усі < li > за одну операцію у список ul#ingredients.
 const list = document.querySelector('#ingredients');
 
-const adding = ingredients.forEach((ingredient) => {
-  const element = document.createElement('li');
-  element.classList.add('item');
-  element.textContent = ingredient;
-  list.append(element);
-  console.log(element)
-})
+const adding = ingredients.map(ingredient => {
+  const item = document.createElement('li');
+  item.textContent = ingredient;
+  return item;
+});
+
+list.append(...adding);
+
+// const adding = ingredients.forEach((ingredient) => {
+//   const element = document.createElement('li');
+//   element.classList.add('item');
+//   element.textContent = ingredient;
+//   list.append(element);
+//   console.log(element)
+// })

@@ -19,27 +19,34 @@ const images = [
 // Усі елементи галереї повинні додаватися в DOM за одну операцію додавання.
 // Додай мінімальне оформлення галереї флексбоксами або грідами через CSS класи.
 const galleryList = document.querySelector('.gallery')
-galleryList.style.display = "flex";
+
+const adding = images.map(({ url, alt }) => {
+  const element = document.createElement("li");
+  const htmlStr = `<img src="${url}" alt="${alt}" width="320" heigth="240" />`;
+  element.insertAdjacentHTML("beforeend", htmlStr);
+  return element;
+});
 
 
+galleryList.append(...adding);
 
-const addImage = images.forEach((image) => {
-  galleryList.insertAdjacentHTML("beforeend", `<img src="${image.url}" alt="${image.alt}"  class="list-item" width="320px">`)
-  const item = document.querySelectorAll('.list-item')
-  console.log(item)
-  console.log(galleryList)
+// const addImage = images.forEach((image) => {
+//   galleryList.insertAdjacentHTML("beforeend", `<img src="${image.url}" alt="${image.alt}"  class="list-item" width="320px">`)
+//   const item = document.querySelectorAll('.list-item')
+//   console.log(item)
+//   console.log(galleryList)
 
-  // console.log('url', image.url, 'alt', image.alt)
-  // const url = image.url;
-  // const alt = image.alt;
-  // const element = document.createElement('img');
-  // console.log(element)
-  // element.setAttribute("src", url)
-  // element.setAttribute("alt", alt);
-  // element.setAttribute("width", "320px")
-  // element.classList.add("list-item")
-  // galleryList.append(element)
-})
+//   // console.log('url', image.url, 'alt', image.alt)
+//   // const url = image.url;
+//   // const alt = image.alt;
+//   // const element = document.createElement('img');
+//   // console.log(element)
+//   // element.setAttribute("src", url)
+//   // element.setAttribute("alt", alt);
+//   // element.setAttribute("width", "320px")
+//   // element.classList.add("list-item")
+//   // galleryList.append(element)
+// })
 
 // item.style.margin = '20px';
 
